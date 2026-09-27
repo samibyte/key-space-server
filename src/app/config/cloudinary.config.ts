@@ -45,8 +45,8 @@ export const uploadFileToCloudinary = async (
       .upload_stream(
         {
           resource_type: "auto",
-          public_id: `rent-nest/${folder}/${uniqueName}`,
-          folder: `rent-nest/${folder}`,
+          public_id: `key-space/${folder}/${uniqueName}`,
+          folder: `key-space/${folder}`,
         },
         (error, result) => {
           if (error) {

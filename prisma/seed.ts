@@ -77,7 +77,7 @@ async function main() {
   }
 
   // ─────────────── Upsert Admin ───────────────
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@rentnest.com";
+  const adminEmail = process.env.ADMIN_EMAIL || "admin@keyspace.com";
   const adminPassword = process.env.ADMIN_PASSWORD || "AdminPassword123!";
   const adminHash = await bcrypt.hash(adminPassword, saltRounds);
   console.log(`🌱 Seeding admin user (${adminEmail})...`);
@@ -92,19 +92,19 @@ async function main() {
   const landlordPassword = await bcrypt.hash("Landlord123!", saltRounds);
   const landlordRawData = [
     {
-      email: "landlord1@rentnest.com",
+      email: "landlord1@keyspace.com",
       name: "Rafiq Hossain",
       phone: "+8801711111111",
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=rafiq",
     },
     {
-      email: "landlord2@rentnest.com",
+      email: "landlord2@keyspace.com",
       name: "Nusrat Jahan",
       phone: "+8801711222222",
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=nusrat",
     },
     {
-      email: "landlord3@rentnest.com",
+      email: "landlord3@keyspace.com",
       name: "Karim Uddin",
       phone: "+8801711333333",
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=karim",
@@ -127,31 +127,31 @@ async function main() {
   const tenantPassword = await bcrypt.hash("Tenant123!", saltRounds);
   const tenantRawData = [
     {
-      email: "tenant1@rentnest.com",
+      email: "tenant1@keyspace.com",
       name: "Anika Sultana",
       phone: "+8801922111111",
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=anika",
     },
     {
-      email: "tenant2@rentnest.com",
+      email: "tenant2@keyspace.com",
       name: "Fahim Islam",
       phone: "+8801922222222",
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=fahim",
     },
     {
-      email: "tenant3@rentnest.com",
+      email: "tenant3@keyspace.com",
       name: "Mitu Begum",
       phone: "+8801922333333",
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=mitu",
     },
     {
-      email: "tenant4@rentnest.com",
+      email: "tenant4@keyspace.com",
       name: "Sohel Rana",
       phone: "+8801922444444",
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sohel",
     },
     {
-      email: "tenant5@rentnest.com",
+      email: "tenant5@keyspace.com",
       name: "Priya Das",
       phone: "+8801922555555",
       avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=priya",

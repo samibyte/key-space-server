@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "9ed817e3-60df-407d-a262-e93fbeb7264f",
-    "name": "Rent Nest Prod",
+    "name": "KeySpace Prod",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "49609884",
     "_collection_link": "https://go.postman.co/collection/49609884-9ed817e3-60df-407d-a262-e93fbeb7264f?source=collection_link"
@@ -30,7 +30,7 @@
               "host": ["rent-nest-backend-woad", "vercel", "app"],
               "path": ["api", "v1", "auth", "register"]
             },
-            "description": "Creates a new user account on the Rent Nest platform.\n\n**Auth:** None required.\n\n**Rate limit:** 20 requests per 15 minutes per IP.\n\n**Request body:**\n| Field | Type | Required | Notes |\n|-------|------|----------|-------|\n| `name` | string | ✅ | Full display name |\n| `email` | string | ✅ | Must be unique |\n| `password` | string | ✅ | Min 6 characters |\n| `phone` | string | ✅ | Contact number |\n| `avatar` | string | ❌ | URL to profile image |\n| `role` | enum | ✅ | `TENANT` or `LANDLORD` |\n\n**Success response (201):** Returns the newly created user object. The password is never returned. `status` defaults to `ACTIVE`.\n\n**Errors:**\n- `400 Bad Request` — validation failure (missing fields, invalid email format)\n- `409 Conflict` — email is already registered"
+            "description": "Creates a new user account on the KeySpace platform.\n\n**Auth:** None required.\n\n**Rate limit:** 20 requests per 15 minutes per IP.\n\n**Request body:**\n| Field | Type | Required | Notes |\n|-------|------|----------|-------|\n| `name` | string | ✅ | Full display name |\n| `email` | string | ✅ | Must be unique |\n| `password` | string | ✅ | Min 6 characters |\n| `phone` | string | ✅ | Contact number |\n| `avatar` | string | ❌ | URL to profile image |\n| `role` | enum | ✅ | `TENANT` or `LANDLORD` |\n\n**Success response (201):** Returns the newly created user object. The password is never returned. `status` defaults to `ACTIVE`.\n\n**Errors:**\n- `400 Bad Request` — validation failure (missing fields, invalid email format)\n- `409 Conflict` — email is already registered"
           },
           "response": []
         },
@@ -653,7 +653,7 @@
           "response": []
         }
       ],
-      "description": "Administrative endpoints for managing the Rent Nest platform. All routes require a valid Admin JWT sent as a Bearer token.\n\nAdmin seed credentials:\n- Email: admin@gmail.com\n- Password: 123456"
+      "description": "Administrative endpoints for managing the KeySpace platform. All routes require a valid Admin JWT sent as a Bearer token.\n\nAdmin seed credentials:\n- Email: admin@keyspace.com\n- Password: 123456"
     },
     {
       "name": "LANDLORD",

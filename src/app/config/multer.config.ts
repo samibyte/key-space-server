@@ -25,7 +25,7 @@ const storage = new CloudinaryStorage({
       fileNameWithoutExtension;
 
     return {
-      folder: `rent-nest/images`,
+      folder: `key-space/images`,
       public_id: uniqueName,
       resource_type: "auto",
     };

@@ -1,6 +1,6 @@
-# RentNest 🏠
+# KeySpace 🏠
 
-RentNest is a comprehensive backend API for a rental property marketplace. The platform connects tenants seeking rental units with landlords listing properties, while administrators oversee content moderation and platform health.
+KeySpace is a comprehensive backend API for a rental property marketplace. The platform connects tenants seeking rental units with landlords listing properties, while administrators oversee content moderation and platform health.
 
 ## 🚀 Key Features
 
@@ -46,7 +46,7 @@ NODE_ENV=development
 PORT=5000
 
 # Database configurations
-DATABASE_URL="postgresql://user:password@localhost:5432/rentnest?schema=public"
+DATABASE_URL="postgresql://user:password@localhost:5432/keyspace?schema=public"
 
 # Authentication
 BCRYPT_SALT_ROUNDS=12
