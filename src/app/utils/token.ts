@@ -23,22 +23,27 @@ const getRefreshToken = (payload: JwtPayload) => {
   return refreshToken;
 };
 
+const isProduction = envVars.NODE_ENV === "production";
+
+const baseCookieOptions = {
+  httpOnly: true,
+  secure: isProduction,
+  // Cross-site cookies require SameSite=None + Secure in production. In local
+  // development both frontends run over http, so Lax keeps the cookie usable.
+  sameSite: isProduction ? ("none" as const) : ("lax" as const),
+  path: "/",
+};
+
 const setAccessTokenCookie = (res: Response, token: string) => {
   CookieUtils.setCookie(res, "accessToken", token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-    path: "/",
+    ...baseCookieOptions,
     maxAge: 60 * 60 * 24 * 1000, //1 day
   });
 };
 
 const setRefreshTokenCookie = (res: Response, token: string) => {
   CookieUtils.setCookie(res, "refreshToken", token, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-    path: "/",
+    ...baseCookieOptions,
     maxAge: 60 * 60 * 24 * 1000 * 7, //7d
   });
 };

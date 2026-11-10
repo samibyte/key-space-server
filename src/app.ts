@@ -13,6 +13,10 @@ initPassport();
 
 const app: Application = express();
 
+// Vercel terminates TLS and forwards the client IP via X-Forwarded-For.
+// Trust exactly one proxy hop so rate limiting keys on the real client IP.
+app.set("trust proxy", 1);
+
 app.use(passport.initialize());
 
 const allowedOrigins = envVars.FRONTEND_URL

@@ -15,6 +15,7 @@ interface EnvConfig {
   GOOGLE_CLIENT_ID?: string;
   GOOGLE_CLIENT_SECRET?: string;
   GOOGLE_CALLBACK_URL?: string;
+  OAUTH_HANDOFF_SECRET?: string;
   STRIPE: {
     STRIPE_SECRET_KEY: string;
     STRIPE_WEBHOOK_SECRET: string;
@@ -60,6 +61,7 @@ const loadEnvVariables = (): EnvConfig => {
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL || "http://localhost:5000/api/v1/auth/google/callback",
+    OAUTH_HANDOFF_SECRET: process.env.OAUTH_HANDOFF_SECRET,
     STRIPE: {
       STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY as string,
       STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET as string,

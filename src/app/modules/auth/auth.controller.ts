@@ -30,6 +30,7 @@ const registerUser = catchAsync(
       file?.path,
     );
 
+    res.set("Cache-Control", "no-store");
     sendResponse(res, {
       success: true,
       statusCode: httpStatus.CREATED,
@@ -48,6 +49,7 @@ const loginUser = catchAsync(
     tokenUtils.setAccessTokenCookie(res, accessToken);
     tokenUtils.setRefreshTokenCookie(res, refreshToken);
 
+    res.set("Cache-Control", "no-store");
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
@@ -76,6 +78,53 @@ const getMe = catchAsync(
   },
 );
 
+const exchangeGoogleCode = catchAsync(
+  async (req: Request, res: Response) => {
+    const code = req.body?.code;
+
+    if (typeof code !== "string" || !code.trim()) {
+      throw new AppError(
+        httpStatus.BAD_REQUEST,
+        "Authorization code is required.",
+      );
+    }
+
+    const result = await authService.exchangeGoogleCode(code.trim());
+
+    res.set("Cache-Control", "no-store");
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Google authentication successful",
+      data: result,
+    });
+  },
+);
+
+const refreshToken = catchAsync(async (req: Request, res: Response) => {
+  const token = req.cookies?.refreshToken || req.body?.refreshToken;
+
+  if (typeof token !== "string" || !token) {
+    throw new AppError(
+      httpStatus.UNAUTHORIZED,
+      "Refresh token is required.",
+    );
+  }
+
+  const result = await authService.refreshTokens(token);
+
+  tokenUtils.setAccessTokenCookie(res, result.accessToken);
+  tokenUtils.setRefreshTokenCookie(res, result.refreshToken);
+
+  res.set("Cache-Control", "no-store");
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Tokens refreshed successfully",
+    data: result,
+  });
+});
+
 const updateAvatar = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     if (!req.file) {
@@ -99,4 +148,6 @@ export const authController = {
   loginUser,
   getMe,
   updateAvatar,
+  exchangeGoogleCode,
+  refreshToken,
 };
